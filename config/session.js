@@ -1,5 +1,6 @@
 const session = require('express-session');
-const MongoStore = require('connect-mongo');
+const connectMongo = require('connect-mongo');
+const MongoStore = connectMongo.MongoStore || connectMongo.default || connectMongo;
 const { writeConn } = require('./db');
 
 // Stateless: KHÔNG dùng MemoryStore. Session lưu tập trung ở collection "sessions" trên Atlas.
