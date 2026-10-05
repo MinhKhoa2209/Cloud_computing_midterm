@@ -37,6 +37,7 @@ app.locals.footer = {
 app.get('/health', (req, res) => res.send('OK'));
 
 // [SESSION] – nhánh feature/session thêm dòng bên dưới
+app.use(require('./config/session'));
 
 // [DB-ROUTES] – nhánh feature/database thêm dòng bên dưới
 app.use('/', require('./routes/books'));
