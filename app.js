@@ -39,6 +39,7 @@ app.get('/health', (req, res) => res.send('OK'));
 // [SESSION] – nhánh feature/session thêm dòng bên dưới
 
 // [DB-ROUTES] – nhánh feature/database thêm dòng bên dưới
+app.use('/', require('./routes/books'));
 
 // Xử lý lỗi chung
 app.use((err, req, res, next) => {
