@@ -1,0 +1,52 @@
+{{#if flash}}
+  <div class="alert {{flash.type}}">{{flash.text}}</div>
+{{/if}}
+
+<section class="card">
+  <h2>Thêm sách mới</h2>
+  <form action="/add" method="POST" class="form">
+    <label>Mã sản phẩm (bắt đầu bằng 128)
+      <input type="text" name="code" placeholder="128-001" required>
+    </label>
+    <label>Tên sách
+      <input type="text" name="name" placeholder="Clean Code" required>
+    </label>
+    <label>Giá gốc (VNĐ)
+      <input type="number" name="price" min="1" step="any" placeholder="100000" required>
+    </label>
+    <button type="submit">Thêm mới</button>
+  </form>
+</section>
+
+<section class="card">
+  <h2>Danh sách sách ({{books.length}})</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Mã SP</th>
+          <th>Tên sách</th>
+          <th>Giá gốc</th>
+          <th>VAT</th>
+          <th>Giá sau thuế</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each books}}
+        <tr>
+          <td>{{code}}</td>
+          <td>{{name}}</td>
+          <td>{{money price}}</td>
+          <td>{{vat}}%</td>
+          <td><strong>{{money priceAfterTax}}</strong></td>
+        </tr>
+        {{else}}
+        <tr><td colspan="5" class="empty">Chưa có sách nào.</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  {{#if views}}
+    <p class="note">Số lần truy cập trong phiên làm việc này (lưu trên MongoDB Atlas): <strong>{{views}}</strong></p>
+  {{/if}}
+</section>
